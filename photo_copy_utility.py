@@ -1,10 +1,15 @@
+# How to
+# 1. Put all images which shall be sorted into a folder and adapt the inputpath variable accordingly
+# 2. Run the script and
+# TODO Add Handling for Files which dont own exif format (Videos (VID*) and Panoramas (PAN*) of Matthias' Xiomi Mi 9 SE
+
 import os
 import regex
 from shutil import copyfile
 
 from exif import Image
 
-inputpath = 'C:\\Users\\Matthias\\Pictures\\2019-MatthiasHandy'
+inputpath = 'C:\\Users\\Matthias\\Pictures\\20212020-matthiasHandy'
 output = 'C:\\Users\\Matthias\\Pictures\\automated'
 if not os.path.exists(output):
     os.mkdir(output)
@@ -25,7 +30,7 @@ for image in UnsortedImages:
         if (folder in outputdict):
             outputdict[folder].add(image)
         else:
-            outputdict.update({folder: set([image])})
+            outputdict.update({folder: {image}})
 
 print('Anzahl an Bildern ' + str(len(UnsortedImages)))
 
